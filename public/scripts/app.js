@@ -1,88 +1,40 @@
 'use strict';
 
-console.log('App.js is running!');
+var appRoot = document.getElementById('app');
 
-var app = {
-    title: 'Indecision App',
-    subtitle: 'An app for making decisions',
-    options: []
+var clicked = false;
+var toggleDetails = function toggleDetails() {
+    clicked = !clicked;
+    renderVisiblity();
 };
 
-var onFormSubmit = function onFormSubmit(e) {
-    e.preventDefault();
-
-    var option = e.target.elements.option.value;
-
-    if (option) {
-        app.options.push(option);
-        e.target.elements.option.value = '';
-    }
-    renderIndecisionApp();
+var hideDetails = function hideDetails() {
+    clicked = false;
+    renderVisiblity();
 };
 
-var clearList = function clearList() {
-    app.options = [];
-    renderIndecisionApp();
-};
-
-var appRoot = document.getElementById("app");
-
-var renderIndecisionApp = function renderIndecisionApp() {
+var renderVisiblity = function renderVisiblity() {
     var template = React.createElement(
         'div',
         null,
         React.createElement(
             'h1',
             null,
-            app.title
-        ),
-        app.subtitle && React.createElement(
-            'p',
-            null,
-            app.subtitle
-        ),
-        React.createElement(
-            'p',
-            null,
-            app.options.length > 0 ? "Here are your options" : "No options"
-        ),
-        React.createElement(
-            'p',
-            null,
-            app.options.length
+            'Visibility Toggle'
         ),
         React.createElement(
             'button',
-            { onClick: clearList },
-            'Remove All'
+            { onClick: toggleDetails },
+            clicked ? 'Hide details' : 'Show details'
         ),
         React.createElement(
-            'ol',
+            'p',
             null,
-            React.createElement(
-                'li',
-                null,
-                'Item one'
-            ),
-            React.createElement(
-                'li',
-                null,
-                'Item two'
-            )
-        ),
-        React.createElement(
-            'form',
-            { onSubmit: onFormSubmit },
-            React.createElement('input', { type: 'text', name: 'option' }),
-            React.createElement(
-                'button',
-                { type: 'submit' },
-                'Add Option'
-            )
+            clicked && 'These are your details'
         )
     );
 
     ReactDOM.render(template, appRoot);
 };
 
-renderIndecisionApp();
+renderVisiblity();
