@@ -1,80 +1,39 @@
 'use strict';
 
-console.log('App.js is running!');
-
-var app = {
-    title: 'Indecision App',
-    subtitle: 'An app for making decisions',
-    options: ['One', 'Two']
+var add = function add(a, b) {
+    // console.log(arguments)
+    return a + b;
 };
+console.log(add(1, 2, 1001));
 
-var template = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        app.title
-    ),
-    app.subtitle && React.createElement(
-        'p',
-        null,
-        app.subtitle
-    ),
-    React.createElement(
-        'p',
-        null,
-        app.options.length > 0 ? "Here are your options" : "No options"
-    ),
-    React.createElement(
-        'ol',
-        null,
-        React.createElement(
-            'li',
-            null,
-            'Item one'
-        ),
-        React.createElement(
-            'li',
-            null,
-            'Item two'
-        )
-    )
-);
+// this keyword - no longer bound
 
 var user = {
-    name: 'Dave',
-    age: 31,
-    location: 'Surrey'
+    name: 'Ziad',
+    cities: ['London', 'Paris', 'New York'],
+    printPlacesLived: function printPlacesLived() {
+        var _this = this;
+
+        return this.cities.map(function (city) {
+            return _this.name + ' has lived in ' + city;
+        });
+    }
 };
 
-function getLocation(location) {
-    if (location) {
-        return React.createElement(
-            'p',
-            null,
-            'Location: ',
-            location
-        );
+console.log(user.printPlacesLived());
+
+// Challenge
+
+var multiplier = {
+    numbers: [1, 2, 3, 4],
+    multiplyBy: 5,
+    multiply: function multiply() {
+        var _this2 = this;
+
+        return this.numbers.map(function (num) {
+            return num * _this2.multiplyBy;
+        });
     }
-}
+};
 
-var templateTwo = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        user.name ? user.name : 'Anonymous'
-    ),
-    user.age && user.age >= 18 && React.createElement(
-        'p',
-        null,
-        'Age: ',
-        user.age
-    ),
-    getLocation(user.location)
-);
-var appRoot = document.getElementById("app");
-
-ReactDOM.render(template, appRoot);
+console.log(multiplier.multiply());
