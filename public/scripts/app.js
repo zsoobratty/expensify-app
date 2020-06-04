@@ -20,6 +20,11 @@ var onFormSubmit = function onFormSubmit(e) {
     renderIndecisionApp();
 };
 
+var clearList = function clearList() {
+    app.options = [];
+    renderIndecisionApp();
+};
+
 var appRoot = document.getElementById("app");
 
 var renderIndecisionApp = function renderIndecisionApp() {
@@ -45,6 +50,11 @@ var renderIndecisionApp = function renderIndecisionApp() {
             'p',
             null,
             app.options.length
+        ),
+        React.createElement(
+            'button',
+            { onClick: clearList },
+            'Remove All'
         ),
         React.createElement(
             'ol',
