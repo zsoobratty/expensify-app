@@ -1,3 +1,5 @@
+// to run - live-server public
+
 console.log('App.js is running!')
 
 const app = {

@@ -1,40 +1,38 @@
 'use strict';
 
-var appRoot = document.getElementById('app');
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var clicked = false;
-var toggleDetails = function toggleDetails() {
-    clicked = !clicked;
-    renderVisiblity();
-};
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var hideDetails = function hideDetails() {
-    clicked = false;
-    renderVisiblity();
-};
+var Person = function () {
+    function Person() {
+        var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'Anon';
+        var age = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
 
-var renderVisiblity = function renderVisiblity() {
-    var template = React.createElement(
-        'div',
-        null,
-        React.createElement(
-            'h1',
-            null,
-            'Visibility Toggle'
-        ),
-        React.createElement(
-            'button',
-            { onClick: toggleDetails },
-            clicked ? 'Hide details' : 'Show details'
-        ),
-        React.createElement(
-            'p',
-            null,
-            clicked && 'These are your details'
-        )
-    );
+        _classCallCheck(this, Person);
 
-    ReactDOM.render(template, appRoot);
-};
+        this.name = name;
+        this.age = age;
+    }
 
-renderVisiblity();
+    _createClass(Person, [{
+        key: 'getGreeting',
+        value: function getGreeting() {
+            // return 'Hello, I am ' + this.name + '!'
+            return 'Hello, my name is ' + this.name;
+        }
+    }, {
+        key: 'getDescription',
+        value: function getDescription() {
+            return this.name + ' is ' + this.age + ' year(s) old.';
+        }
+    }]);
+
+    return Person;
+}();
+
+var me = new Person('Ziad Soobratty', 29);
+console.log(me.getDescription());
+
+var other = new Person();
+console.log(other.getDescription());
