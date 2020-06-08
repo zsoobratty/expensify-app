@@ -1,7 +1,6 @@
 // to run - live-server public
 // babel src/playground/es6-classes-1.js --out-file=public/scripts/app.js --presets="env,react" --watch
 
-
 class IndecisionApp extends React.Component {
     render() {
         const title = 'Indecision'
@@ -45,8 +44,13 @@ class Action extends React.Component {
 }
 
 class Options extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleRemoveAll = this.handleRemoveAll.bind(this)
+    }
     handleRemoveAll() {
-        alert("Options Removed")
+        console.log(this.props.options)
+        // alert("Options Removed")
     }
     render() {
         return (
