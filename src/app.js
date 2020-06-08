@@ -4,11 +4,15 @@
 
 class IndecisionApp extends React.Component {
     render() {
+        const title = 'Indecision'
+        const subtitle = "We'll decide for you!"
+        const options = ['Thing one', 'Thing two', 'Thing four']
+
         return(
             <div>
-                <Header />
+                <Header title={title} subtitle={subtitle} />
                 <Action />
-                <Options />
+                <Options options={options} />
                 <AddOption />
             </div>
         )
@@ -19,29 +23,40 @@ class Header extends React.Component {
     render() {
         return (
             <div>
-                <h1>Indecision App</h1>
-                <h2>We'll decide</h2>
+                <h1>{this.props.title}</h1>
+                <h2>{this.props.subtitle}</h2>
             </div>
         )
     }
 }
 
 class Action extends React.Component {
+    handlePick() {
+        alert('handlePick')
+    }
+
     render() {
         return (
             <div>
-                <button>What should I do?</button>
+                <button onClick={this.handlePick}>What should I do?</button>
             </div>
         )
     }
 }
 
 class Options extends React.Component {
+    handleRemoveAll() {
+        alert("Options Removed")
+    }
     render() {
         return (
             <div>
-                <h3>Options Component Here</h3>
-                <Option />
+            <button onClick={this.handleRemoveAll}>Remove All</button>
+                <h3>{
+                    this.props.options.map((option) => {
+                        return <Option key={option} optionText={option}/>
+                    } )
+                }</h3>
             </div>
         )
     }
@@ -51,17 +66,29 @@ class Option extends React.Component {
     render() {
         return(
             <div>
-                Option Component Here
+                {this.props.optionText}
             </div>
         )
     }
 }
 
 class AddOption extends React.Component {
+    
+    handleAddOption(e) {
+        e.preventDefault();
+        const option = e.target.elements.option.value.trim()
+
+        if(option) {
+            alert(option)
+        }
+    }
     render() {
         return(
             <div>
-                <h4>AddOption Component Here</h4>
+                <form onSubmit={this.handleAddOption}>
+                    <input type="text" name="option"/>
+                    <button type="submit">Add Option</button>
+                </form>
             </div>
         )
     }
