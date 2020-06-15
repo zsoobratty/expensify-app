@@ -3,10 +3,6 @@
 ### An expense tracking app build using JavaScript, React, Babel, Webpack and SCSS. 
 
 
-![Alt text](/screenshots/Indecision.PNG?raw=true "Indecision")  
-
-![Alt text](/screenshots/Modal.PNG?raw=true "Modal")
-
 Learning how to build and launch React web applications using React, Redux, Webpack, React-Router, and more, from the Udemy course:
 #### The Complete React Developer Course (w/ Hooks and Redux) by Andrew Mead
 
