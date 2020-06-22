@@ -24,15 +24,13 @@ test('should generate set end date action object', () => {
 })
 
 test('should generate sort by date action object', () => {
-    const action = sortByDate() 
-    expect(action).toEqual({
+    expect(sortByDate()).toEqual({
         type: 'SORT_BY_DATE'
     })
 })
 
 test('should generate sort by amount action object', () => {
-    const action = sortByAmount()
-    expect(action).toEqual({
+    expect(sortByAmount()).toEqual({
         type: 'SORT_BY_AMOUNT'
     })
 })
