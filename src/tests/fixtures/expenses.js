@@ -1,5 +1,4 @@
 import moment from 'moment'
-import expenses from '../fixtures/expenses'
 
 export default [{
     id: '1',
